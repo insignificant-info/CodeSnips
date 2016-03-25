@@ -28,4 +28,16 @@ class Solution(object):
        for ii in xrange(len(prices)-1):
            pricedelta[ii] = prices[ii+1] - prices[ii]
            
-       #
+       # find the max differential 
+       # Initialize the best_increase to something very negative (this could be done better)
+       best_increase = -999
+       #Iterate through all first prices
+       for i,first_price in enumerate(prices):
+            # Skip the very last number in prices from consideration
+            if i != (len(prices) - 1) :
+                #Check all first prices against all second prices
+                for second_price in enumerate (prices[i + 1 :])
+                    if second_price - first_price > best_increase:
+                        best_increase = second_price - first_price
+
+        
