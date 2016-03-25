@@ -32,12 +32,12 @@ class Solution(object):
        # Initialize the best_increase to something very negative (this could be done better)
        best_increase = -999
        #Iterate through all first prices
-       for i,first_price in enumerate(prices):
+       for i,first_price in enumerate(prices[:-1]):
             # Skip the very last number in prices from consideration
-            if i != (len(prices) - 1) :
-                #Check all first prices against all second prices
-                for second_price in enumerate (prices[i + 1 :])
-                    if second_price - first_price > best_increase:
-                        best_increase = second_price - first_price
-
+            #if i != (len(prices) - 1) :
+            #Check all first prices against all second prices
+            for j,second_price in enumerate(prices[i+1:]):
+                best_increase = max(second_price - first_price, best_increase)
+        
+       return best_increase if best_increase > 0 else 0
         
