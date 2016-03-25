@@ -32,12 +32,49 @@ class Solution(object):
        # Initialize the best_increase to something very negative (this could be done better)
        best_increase = -999
        #Iterate through all first prices
-       for i,first_price in enumerate(prices[:-1]):
-            # Skip the very last number in prices from consideration
-            #if i != (len(prices) - 1) :
-            #Check all first prices against all second prices
-            for j,second_price in enumerate(prices[i+1:]):
-                best_increase = max(second_price - first_price, best_increase)
+       # for i,first_price in enumerate(prices[:-1]):
+       #      # Skip the very last number in prices from consideration
+       #      #if i != (len(prices) - 1) :
+       #      #Check all first prices against all second prices
+       #      for j,second_price in enumerate(prices[i+1:]):
+       #          best_increase = max(second_price - first_price, best_increase)
+
+
+
         
        return best_increase if best_increase > 0 else 0
-        
+
+   def find_extremes(self, prices):
+      """
+      Pass in a slice (or all) of prices and find the extreme max and min as well as their locations
+
+      Input:
+      prices - A list of sequential prices (slice as needed)
+
+      Returns:
+      max_val, min_val - Dicts with keys value and location
+
+
+
+      """
+
+      max_val = {value = -999,
+             location = 0}
+      min_val = {value = +999,
+             location = 0}
+
+      for i,price in enumerate(prices):
+            if price > max_val['value']:
+                  max_val['value'] = price
+                  max_val['location'] = i
+            if price < min_val['value']:
+                  min_val['value'] = price
+                  min_val['location'] = i
+
+      return max_val, min_val
+
+
+
+
+
+                    
